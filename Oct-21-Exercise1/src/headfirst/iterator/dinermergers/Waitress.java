@@ -7,15 +7,18 @@ public class Waitress {
 
   private PancakeHouseMenu pancakeHouseMenu;
   private DinerMenu dinerMenu;
+  private VesuviosMenu vMenu;
 
-  public Waitress(PancakeHouseMenu pancakeHouseMenu, DinerMenu dinerMenu) {
+  public Waitress(PancakeHouseMenu pancakeHouseMenu, DinerMenu dinerMenu, VesuviosMenu vMenu) {
     this.pancakeHouseMenu = pancakeHouseMenu;
     this.dinerMenu = dinerMenu;
+    this.vMenu = vMenu;
   }
 
   public void printMenu() {
     ArrayList<MenuItem> menuItems = pancakeHouseMenu.getMenuItems();
     MenuItem[] menuItemsAs = dinerMenu.getMenuItems();
+    LinkedList<MenuItem> vMenuItems = vMenu.getMenuItems();
 
     System.out.println("MENU\n----\nBREAKFAST");
     for (int i = 0; i < menuItems.size(); i++) {
@@ -25,8 +28,16 @@ public class Waitress {
       System.out.println(menuItem.getDescription());
     }
     System.out.println("\nLUNCH");
-    for (int i = 0; i < menuItemsAs.length; i++) {
+    for (int i = 0; i < 3; i++) {
       MenuItem menuItem = menuItemsAs[i];
+      System.out.print(menuItem.getName() + ", ");
+      System.out.print(menuItem.getPrice() + " -- ");
+      System.out.println(menuItem.getDescription());
+    }
+    
+    System.out.println("\nVesuvios");
+    for (int i = 0; i < vMenuItems.size(); i++) {
+      MenuItem menuItem = vMenuItems.get(i);
       System.out.print(menuItem.getName() + ", ");
       System.out.print(menuItem.getPrice() + " -- ");
       System.out.println(menuItem.getDescription());
